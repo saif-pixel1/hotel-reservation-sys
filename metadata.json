@@ -1,0 +1,6 @@
+{
+  "name": "Hotelier - Luxury Hotel & Resort Reservation System",
+  "description": "Ultra-luxurious 5-star hotel reservation system with real-time room availability, interactive suite showcase, bespoke add-ons, gallery lightbox, and concierge booking engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

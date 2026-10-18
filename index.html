@@ -1,0 +1,1939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotelier - Luxury Hotel & Resort Reservation System</title>
+    <meta name="description" content="Ultra-luxurious 5-star hotel reservation system with real-time room availability, interactive suite showcase, bespoke add-ons, gallery lightbox, and concierge booking engine." />
+    <meta property="og:title" content="Hotelier - Luxury Hotel & Resort Reservation System" />
+    <meta property="og:description" content="Ultra-luxurious 5-star hotel reservation system with real-time room availability, interactive suite showcase, bespoke add-ons, gallery lightbox, and concierge booking engine." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Swiper JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <!-- Leaflet Map CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- ==========================================================================
+         HEADER & NAVIGATION BAR
+         ========================================================================== -->
+    <header class="header">
+      <div class="container">
+        <!-- Brand Logo -->
+        <a href="#home" class="logo">
+          <i class="fas fa-crown"></i>
+          <div>
+            <div class="logo-text">HOTELIER</div>
+            <span class="logo-sub">Resort & Spa</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="navbar">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#residences-lounges">Flats & Lounges</a>
+          <a href="#rooms">Suites & Rooms</a>
+          <a href="#services">Services</a>
+          <a href="#location">Location</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faqs">FAQs</a>
+        </nav>
+
+        <!-- Nav Actions: Currency, Wishlist, My Bookings, Admin Toggle, Book Button -->
+        <div class="nav-actions">
+          <select id="currency-selector" class="currency-select" title="Change Currency">
+            <option value="INR" selected>INR (₹)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+
+          <button class="inr-toggle-btn active" id="quick-inr-toggle" title="Quick Indian Rupee (INR) Toggle">
+            <i class="fas fa-rupee-sign"></i> <span>INR</span>
+          </button>
+
+          <button class="btn-outline btn-sm" id="open-wishlist-trigger" title="Saved Wishlist">
+            <i class="fas fa-heart"></i> <span id="wishlist-count-badge">0</span>
+          </button>
+
+          <button class="btn-outline btn-sm open-my-bookings-trigger" title="Lookup Reservations">
+            <i class="fas fa-suitcase"></i> <span class="hide-mobile">Bookings</span>
+          </button>
+
+          <button class="admin-toggle-btn" id="toggle-admin-view" title="Toggle Admin Portal">
+            <i class="fas fa-lock"></i> Admin Portal
+          </button>
+
+          <button class="btn btn-sm header-btn open-booking-trigger">
+            <i class="fas fa-calendar-check"></i> <span>Book a Suite</span>
+          </button>
+
+          <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         HERO SECTION WITH CINEMATIC SWIPER SLIDES
+         ========================================================================== -->
+    <section class="home" id="home">
+      <div class="swiper home-slider">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide" style="background-image: url('/images/home-slide1.jpg');">
+            <div class="content">
+              <span class="sub-title fade-item">Welcome to Absolute Grandeur</span>
+              <h3 class="fade-item">The Pinnacle of Luxury & Sophistication</h3>
+              <p class="fade-item">Where timeless design merges with endless azure ocean horizons, delivering personalized hospitality tailored to perfection.</p>
+              <div class="cta-group fade-item">
+                <button class="btn open-booking-trigger">
+                  <i class="fas fa-key"></i> Reserve Your Stay
+                </button>
+                <a href="#rooms" class="btn-outline">
+                  <i class="fas fa-compass"></i> Explore Suites
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide" style="background-image: url('/images/home-slide2.jpg');">
+            <div class="content">
+              <span class="sub-title fade-item">Holistic Sanctuary</span>
+              <h3 class="fade-item">Rejuvenate in Celestial Tranquility</h3>
+              <p class="fade-item">Experience secluded oceanfront cliffside spa pavilions, personalized organic wellness therapies, and gentle sea breezes.</p>
+              <div class="cta-group fade-item">
+                <button class="btn open-booking-trigger">
+                  <i class="fas fa-spa"></i> Book Sanctuary Experience
+                </button>
+                <a href="#services" class="btn-outline">
+                  <i class="fas fa-leaf"></i> Wellness Menu
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide" style="background-image: url('/images/home-slide3.jpg');">
+            <div class="content">
+              <span class="sub-title fade-item">Michelin Gastronomy</span>
+              <h3 class="fade-item">Savor Epicurean Perfection by the Sea</h3>
+              <p class="fade-item">Artisanal culinary creations and rare vintage wines curated by world-renowned master sommeliers under a canopy of stars.</p>
+              <div class="cta-group fade-item">
+                <button class="btn open-booking-trigger">
+                  <i class="fas fa-utensils"></i> Reserve Private Table
+                </button>
+                <a href="#gallery" class="btn-outline">
+                  <i class="fas fa-images"></i> Culinary Gallery
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide" style="background-image: url('/images/home-slide4.jpg');">
+            <div class="content">
+              <span class="sub-title fade-item">Unrivaled Hospitality</span>
+              <h3 class="fade-item">Opulence in Every Architectural Detail</h3>
+              <p class="fade-item">From round-the-clock dedicated butler service to bespoke private yacht charters, every moment is an indelible memory.</p>
+              <div class="cta-group fade-item">
+                <button class="btn open-booking-trigger">
+                  <i class="fas fa-crown"></i> Experience Excellence
+                </button>
+                <a href="#about" class="btn-outline">
+                  <i class="fas fa-gem"></i> Our Heritage
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ADVANCED REAL-TIME QUICK RESERVATION BAR
+         ========================================================================== -->
+    <div class="reservation-bar-wrapper">
+      <form id="quick-reservation-form" class="reservation-bar">
+        <div class="res-field">
+          <label for="bar-checkin"><i class="far fa-calendar-alt"></i> Check-In Date</label>
+          <input type="date" id="bar-checkin" required>
+        </div>
+
+        <div class="res-field">
+          <label for="bar-checkout"><i class="far fa-calendar-check"></i> Check-Out Date</label>
+          <input type="date" id="bar-checkout" required>
+        </div>
+
+        <div class="res-field">
+          <label for="bar-room-type"><i class="fas fa-bed"></i> Accommodation Type</label>
+          <select id="bar-room-type">
+            <option value="urban-cozy-flat">Urban Cozy Studio Flat (From ₹3,758)</option>
+            <option value="sunset-1bhk-flat">Sunset Bay 1-BHK Flat (From ₹6,263)</option>
+            <option value="serene-garden-flat">Serene Garden 2-BHK Family Flat (From ₹9,185)</option>
+            <option value="seaside-executive-flat">Seaside Executive 2-BHK Flat (From ₹15,030)</option>
+            <option value="oceanfront-duplex-flat">Royal Oceanfront Duplex Flat</option>
+            <option value="grand-marina-flat">Grand Marina Penthouse Flat</option>
+            <option value="sky-lounge-suite">Celestial VIP Sky Lounge & Suite</option>
+            <option value="imperial-club-lounge">Imperial Club Lounge Residence</option>
+            <option value="imperial-penthouse">Imperial Ocean Penthouse</option>
+            <option value="royal-horizon-villa">Royal Horizon Beach Villa</option>
+            <option value="presidential-garden">Presidential Garden Residence</option>
+            <option value="serenity-wellness">Serenity Wellness Suite</option>
+            <option value="executive-grand">Executive Grand Suite</option>
+            <option value="deluxe-horizon">Deluxe Horizon Room</option>
+          </select>
+        </div>
+
+        <div class="res-field">
+          <label for="bar-guests"><i class="fas fa-user-friends"></i> Guests</label>
+          <select id="bar-guests">
+            <option value="2">2 Adults, 0 Children</option>
+            <option value="1">1 Adult, Solo Retreat</option>
+            <option value="3">3 Adults, Luxury Stay</option>
+            <option value="4">4 Guests, Family Suite</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn res-submit-btn">
+          <i class="fas fa-search"></i> Check Availability
+        </button>
+      </form>
+    </div>
+
+    <!-- ==========================================================================
+         HOTEL MANAGEMENT ADMIN DASHBOARD (HIDDEN BY DEFAULT, TOGGLED VIA HEADER)
+         ========================================================================== -->
+    <section class="admin-section" id="admin-dashboard-section">
+      <div class="admin-header">
+        <div>
+          <span class="sub-title">Hotel Administration & Control Plane</span>
+          <h2 style="color: var(--white); font-size: 2rem;">Sanctuary Operations Console</h2>
+        </div>
+        <div class="admin-nav-tabs">
+          <button class="admin-tab-btn active" data-tab="overview">
+            <i class="fas fa-chart-pie"></i> Overview
+          </button>
+          <button class="admin-tab-btn" data-tab="bookings">
+            <i class="fas fa-calendar-check"></i> Reservations
+          </button>
+          <button class="admin-tab-btn" data-tab="rooms">
+            <i class="fas fa-door-open"></i> Inventory & Rooms
+          </button>
+          <button class="admin-tab-btn" data-tab="pricing">
+            <i class="fas fa-tags"></i> Dynamic Pricing
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Stats -->
+      <div class="admin-kpi-grid">
+        <div class="kpi-card">
+          <i class="fas fa-calendar-check kpi-icon"></i>
+          <div class="kpi-label">Active Bookings</div>
+          <div class="kpi-value" id="admin-kpi-bookings">2</div>
+          <div class="kpi-trend"><i class="fas fa-arrow-up"></i> +12% vs last week</div>
+        </div>
+
+        <div class="kpi-card">
+          <i class="fas fa-coins kpi-icon"></i>
+          <div class="kpi-label">Confirmed Revenue</div>
+          <div class="kpi-value" id="admin-kpi-revenue">$5,750</div>
+          <div class="kpi-trend"><i class="fas fa-arrow-up"></i> +18% MoM</div>
+        </div>
+
+        <div class="kpi-card">
+          <i class="fas fa-chart-line kpi-icon"></i>
+          <div class="kpi-label">Resort Occupancy</div>
+          <div class="kpi-value" id="admin-kpi-occupancy">33%</div>
+          <div class="kpi-trend"><i class="fas fa-check"></i> High Yield</div>
+        </div>
+
+        <div class="kpi-card">
+          <i class="fas fa-bed kpi-icon"></i>
+          <div class="kpi-label">Available Suites</div>
+          <div class="kpi-value" id="admin-kpi-rooms">5 / 6</div>
+          <div class="kpi-trend"><i class="fas fa-shield-alt"></i> Conflict Engine Active</div>
+        </div>
+      </div>
+
+      <!-- Tab 1: Overview -->
+      <div class="admin-tab-content" id="admin-overview">
+        <h3 style="color: var(--white); margin-bottom: 1rem;">Recent Guest Bookings</h3>
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Booking Code</th>
+                <th>Guest Profile</th>
+                <th>Reserved Suite</th>
+                <th>Dates & Duration</th>
+                <th>Total Paid</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-bookings-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Reservations Management -->
+      <div class="admin-tab-content" id="admin-bookings" style="display: none;">
+        <h3 style="color: var(--white); margin-bottom: 1rem;">Complete Reservation Manifest</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          View, check-in, complete, or cancel guest reservations. Double-booking conflicts are automatically blocked by the backend date overlap validator.
+        </p>
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Guest</th>
+                <th>Suite</th>
+                <th>Stay Dates</th>
+                <th>Paid</th>
+                <th>Status</th>
+                <th>Management Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-bookings-full-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Rooms & Inventory -->
+      <div class="admin-tab-content" id="admin-rooms" style="display: none;">
+        <h3 style="color: var(--white); margin-bottom: 1rem;">Suite Inventory & Operational Status</h3>
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Preview</th>
+                <th>Suite Name</th>
+                <th>Category</th>
+                <th>Capacity / Area</th>
+                <th>Current Rate</th>
+                <th>Status</th>
+                <th>Toggle Status</th>
+              </tr>
+            </thead>
+            <tbody id="admin-rooms-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 4: Dynamic Pricing Rules Engine -->
+      <div class="admin-tab-content" id="admin-pricing" style="display: none;">
+        <h3 style="color: var(--white); margin-bottom: 1rem;">Dynamic Pricing & Demand Yield Rules</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Configure transparent rule-based price adjustments based on seasonal events, weekend surge demand, or early reservations.
+        </p>
+
+        <div class="pricing-rule-card">
+          <div class="meta">
+            <h4>Standard Base Rates</h4>
+            <p>Applies standard published seasonal rate without surge or discount multipliers.</p>
+          </div>
+          <button class="btn-outline btn-sm" onclick="applyDynamicPricingRule('normal')">Apply Base Rates</button>
+        </div>
+
+        <div class="pricing-rule-card">
+          <div class="meta">
+            <h4>Weekend Surge (+20% Multiplier)</h4>
+            <p>Elevates rates during peak Friday to Sunday arrivals when resort demand is at capacity.</p>
+          </div>
+          <button class="btn btn-sm" onclick="applyDynamicPricingRule('weekend')">Apply Weekend Surge</button>
+        </div>
+
+        <div class="pricing-rule-card">
+          <div class="meta">
+            <h4>Grand Prix / Festival Surcharge (+35% Multiplier)</h4>
+            <p>High-yield peak demand pricing during major international cultural events and regattas.</p>
+          </div>
+          <button class="btn btn-sm" onclick="applyDynamicPricingRule('festival')">Apply Festival Surcharge</button>
+        </div>
+
+        <div class="pricing-rule-card">
+          <div class="meta">
+            <h4>Early-Bird Booking Incentive (-10% Promotional Discount)</h4>
+            <p>Reward travelers planning their retreat more than 30 days in advance.</p>
+          </div>
+          <button class="btn-outline btn-sm" onclick="applyDynamicPricingRule('earlybird')">Apply Early-Bird Discount</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT HOTELIER SECTION & PHILOSOPHY
+         ========================================================================== -->
+    <section class="about" id="about">
+      <div class="row">
+        <div class="image-wrapper">
+          <img src="/images/about.jpg" alt="Hotelier Grand Facade & Lobby" class="main-img" />
+          <div class="badge-experience">
+            <div class="number">25+</div>
+            <div class="label">Years of Regal Luxury</div>
+          </div>
+        </div>
+
+        <div class="content">
+          <span class="sub-title">The Hotelier Legacy</span>
+          <h2>Crafted for Perfection, Bound to Transcending Elegance</h2>
+          <p class="main-desc">
+            Discover the pinnacle of luxury and sophistication at <strong>Hotelier</strong>, where every detail is crafted to perfection. From the moment you arrive, our mission is to provide an experience that blends unparalleled elegance with personalized service.
+          </p>
+
+          <div class="philosophy">
+            <div class="philosophy-item">
+              <div class="icon"><i class="fas fa-globe"></i></div>
+              <div class="details">
+                <h4>Global Influences</h4>
+                <p>Hotelier blends timeless design with global influences to create an experience that transcends borders.</p>
+              </div>
+            </div>
+
+            <div class="philosophy-item">
+              <div class="icon"><i class="fas fa-heart"></i></div>
+              <div class="details">
+                <h4>Dedicated Hospitality</h4>
+                <p>Our dedicated team is committed to making every guest feel valued, honored, and meticulously cared for.</p>
+              </div>
+            </div>
+
+            <div class="philosophy-item">
+              <div class="icon"><i class="fas fa-seedling"></i></div>
+              <div class="details">
+                <h4>Conscious Indulgence</h4>
+                <p>Experience indulgence with a conscience. We prioritize eco-friendly practices across every sanctuary suite.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn open-booking-trigger">
+              <i class="fas fa-glass-cheers"></i> Plan Your Sanctuary Visit
+            </button>
+            <span style="font-size: 0.85rem; color: var(--primary); letter-spacing: 0.1em; text-transform: uppercase;">
+              <i class="fas fa-certificate"></i> Michelin Key 2026
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RESIDENCES & SKY LOUNGE EXPERIENCE (FLATS & LOUNGES SHOWCASE)
+         ========================================================================== -->
+    <section class="residence-lounge-showcase" id="residences-lounges">
+      <div class="container">
+        <div class="heading">
+          <span class="sub-title">Signature Collections</span>
+          <h2>Exclusive Serviced Flats & VIP Sky Lounges</h2>
+          <div class="gold-divider"></div>
+          <p>Experience the zenith of hospitality with our multi-room residential serviced flats and high-altitude VIP club lounges, offering bespoke living spaces, chef dining, and sommelier cellars with real-time INR currency conversion.</p>
+        </div>
+
+        <div class="rl-grid">
+          <!-- Card 1: Affordable Serviced Flats -->
+          <div class="rl-card">
+            <div class="rl-image-box">
+              <img src="/images/flat-cozy.jpg" alt="Affordable Studio & 1-BHK Serviced Flats" />
+              <div class="rl-badge"><i class="fas fa-tag"></i> Budget & Studio Flats</div>
+              <div class="rl-price-pill"><span class="price-val" data-base-usd="45">₹3,758</span> / night</div>
+            </div>
+            <div class="rl-content">
+              <h3>Urban Studio & 1-BHK Serviced Flats</h3>
+              <p>
+                Modern, highly functional, and budget-friendly flats featuring induction kitchenettes, rapid Wi-Fi, queen beds, and sun-lit living spaces. Perfect for solo travelers and value-minded holidaymakers.
+              </p>
+              <div class="rl-perks-list">
+                <div class="rl-perk"><i class="fas fa-utensils"></i> Kitchenette Included</div>
+                <div class="rl-perk"><i class="fas fa-wifi"></i> High-Speed Fiber Wi-Fi</div>
+                <div class="rl-perk"><i class="fas fa-snowflake"></i> Smart Climate Control</div>
+                <div class="rl-perk"><i class="fas fa-wallet"></i> Exceptional INR Value</div>
+              </div>
+              <div class="rl-action-row">
+                <button class="btn btn-sm btn-book-room" data-room-id="urban-cozy-flat">
+                  <i class="fas fa-calendar-check"></i> Book Studio Flat
+                </button>
+                <button class="btn-outline btn-sm" onclick="HOTEL_DATA.bookingDraft.roomId='sunset-1bhk-flat'; openBookingModal(1);">
+                  Explore 1-BHK Flat
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: 2-BHK Family & Executive Flats -->
+          <div class="rl-card">
+            <div class="rl-image-box">
+              <img src="/images/flat-garden.jpg" alt="2-BHK Family & Executive Serviced Flat" />
+              <div class="rl-badge"><i class="fas fa-users"></i> Family & Executive Flats</div>
+              <div class="rl-price-pill"><span class="price-val" data-base-usd="110">₹9,185</span> / night</div>
+            </div>
+            <div class="rl-content">
+              <h3>Serene 2-BHK Family & Garden Flats</h3>
+              <p>
+                Multi-room family serviced flats with chef-ready kitchens, 4-person dining tables, washer/dryer facilities, garden patios, and dedicated workstations designed for extended comfortable family stays.
+              </p>
+              <div class="rl-perks-list">
+                <div class="rl-perk"><i class="fas fa-door-open"></i> 2 Private Bedrooms</div>
+                <div class="rl-perk"><i class="fas fa-seedling"></i> Garden Terrace Access</div>
+                <div class="rl-perk"><i class="fas fa-coffee"></i> Full Family Kitchen</div>
+                <div class="rl-perk"><i class="fas fa-parking"></i> Reserved Free Parking</div>
+              </div>
+              <div class="rl-action-row">
+                <button class="btn btn-sm btn-book-room" data-room-id="serene-garden-flat">
+                  <i class="fas fa-calendar-check"></i> Book Family Flat
+                </button>
+                <button class="btn-outline btn-sm" onclick="HOTEL_DATA.bookingDraft.roomId='seaside-executive-flat'; openBookingModal(1);">
+                  Explore 2-BHK Executive
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Royal Duplex Oceanfront Flats -->
+          <div class="rl-card">
+            <div class="rl-image-box">
+              <img src="/images/flat-1.jpg" alt="Luxury Residential Serviced Flat" />
+              <div class="rl-badge"><i class="fas fa-crown"></i> Signature Duplex Flat</div>
+              <div class="rl-price-pill"><span class="price-val" data-base-usd="1100">₹91,850</span> / night</div>
+            </div>
+            <div class="rl-content">
+              <h3>Royal Duplex Residential Flats</h3>
+              <p>
+                Multi-level private residential sanctuaries equipped with custom Gaggenau designer chef kitchens, marble dining islands, dedicated butler service, and private sea-facing terraces tailored for extended luxury living.
+              </p>
+              <div class="rl-perks-list">
+                <div class="rl-perk"><i class="fas fa-utensils"></i> Full Gourmet Kitchen</div>
+                <div class="rl-perk"><i class="fas fa-couch"></i> Sprawling Living Pavilion</div>
+                <div class="rl-perk"><i class="fas fa-user-tie"></i> 24/7 Private Butler</div>
+                <div class="rl-perk"><i class="fas fa-water"></i> Direct Sea-Facing Balcony</div>
+              </div>
+              <div class="rl-action-row">
+                <button class="btn btn-sm btn-book-room" data-room-id="oceanfront-duplex-flat">
+                  <i class="fas fa-calendar-check"></i> Reserve Duplex Flat
+                </button>
+                <button class="btn-outline btn-sm" onclick="HOTEL_DATA.bookingDraft.roomId='grand-marina-flat'; openBookingModal(1);">
+                  Explore Marina Flat
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Celestial VIP Sky Lounges -->
+          <div class="rl-card">
+            <div class="rl-image-box">
+              <img src="/images/lounge-1.jpg" alt="VIP Celestial Sky Lounge" />
+              <div class="rl-badge"><i class="fas fa-cocktail"></i> VIP Sky Lounge</div>
+              <div class="rl-price-pill"><span class="price-val" data-base-usd="890">₹74,315</span> / night</div>
+            </div>
+            <div class="rl-content">
+              <h3>Celestial VIP Sky Lounge & Suites</h3>
+              <p>
+                Perched on the 51st floor offering 360-degree twilight vistas, dedicated private sommelier bar, velvet salon seating, vintage champagne tastings, artisan evening tapas, and private boardroom access.
+              </p>
+              <div class="rl-perks-list">
+                <div class="rl-perk"><i class="fas fa-wine-glass-alt"></i> Private Sommelier Bar</div>
+                <div class="rl-perk"><i class="fas fa-glass-cheers"></i> Evening Canapés & Cocktails</div>
+                <div class="rl-perk"><i class="fas fa-cloud-sun"></i> 51st Floor Twilight Views</div>
+                <div class="rl-perk"><i class="fas fa-concierge-bell"></i> VIP Fast-Track Check-In</div>
+              </div>
+              <div class="rl-action-row">
+                <button class="btn btn-sm btn-book-room" data-room-id="sky-lounge-suite">
+                  <i class="fas fa-calendar-check"></i> Reserve Sky Lounge
+                </button>
+                <button class="btn-outline btn-sm" onclick="HOTEL_DATA.bookingDraft.roomId='imperial-club-lounge'; openBookingModal(1);">
+                  Explore Club Lounge
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ROOMS & SUITES SECTION WITH CAROUSEL & ADVANCED FILTERS
+         ========================================================================== -->
+    <section class="rooms" id="rooms">
+      <div class="heading">
+        <span class="sub-title">Sanctuary Suites</span>
+        <h2>Luxury Living & Private Sanctuaries</h2>
+        <div class="gold-divider"></div>
+        <p>Stay in comfort and style with our exclusive room. Perfect for relaxation and convenience.</p>
+      </div>
+
+      <!-- Advanced Search Filters Bar -->
+      <div class="advanced-filters-bar">
+        <div class="filter-group">
+          <label><i class="fas fa-coins"></i> Max Nightly Price: <span id="filter-price-display" style="color: #fff; font-weight: bold;">₹1,25,000</span></label>
+          <input type="range" id="filter-price-range" class="filter-range" min="40" max="1500" step="20" value="1500">
+        </div>
+
+        <div class="filter-group">
+          <label><i class="fas fa-users"></i> Min Capacity:</label>
+          <select id="filter-guests-select" class="currency-select" style="padding: 0.4rem 0.8rem;">
+            <option value="1">Any Guests</option>
+            <option value="2">2+ Guests</option>
+            <option value="3">3+ Guests</option>
+            <option value="4">4 Guests (Family)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <button class="btn-outline btn-sm" onclick="document.getElementById('open-ai-concierge-trigger').click()">
+            <i class="fas fa-brain"></i> AI Concierge Match
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="rooms-filter">
+        <button class="filter-btn active" data-filter="all">All Accommodations</button>
+        <button class="filter-btn" data-filter="flat"><i class="fas fa-building"></i> Luxury & Budget Flats</button>
+        <button class="filter-btn" data-filter="lounge"><i class="fas fa-cocktail"></i> Club Lounges</button>
+        <button class="filter-btn" data-filter="penthouse">Penthouses</button>
+        <button class="filter-btn" data-filter="villa">Ocean Villas</button>
+        <button class="filter-btn" data-filter="executive">Executive</button>
+        <button class="filter-btn" data-filter="deluxe">Deluxe</button>
+      </div>
+
+      <!-- Swiper Room Slider -->
+      <div class="swiper room-slider">
+        <div class="swiper-wrapper">
+
+          <!-- Lower Price Flat 1: Urban Cozy Studio Flat -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="urban-cozy-flat">
+              <button class="wishlist-heart-btn" data-room-id="urban-cozy-flat" onclick="toggleWishlist('urban-cozy-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-cozy.jpg" alt="Urban Cozy Studio Flat" />
+                <span class="tag-badge">Budget Friendly Flat</span>
+                <div class="price-tag">₹3,758 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Urban Cozy Studio Flat</h3>
+                <p class="desc">Modern and highly affordable studio apartment featuring an induction kitchenette, breakfast dining bar, rapid fiber Wi-Fi, and refreshing rain shower.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 2 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 420 sq ft</span>
+                  <span><i class="fas fa-bed"></i> Queen Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-utensils"></i> Kitchenette</span>
+                  <span class="amenity-chip"><i class="fas fa-wifi"></i> Fiber Wi-Fi</span>
+                  <span class="amenity-chip"><i class="fas fa-tv"></i> Smart TV</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="urban-cozy-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower Price Flat 2: Sunset Bay 1-BHK Serviced Flat -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="sunset-1bhk-flat">
+              <button class="wishlist-heart-btn" data-room-id="sunset-1bhk-flat" onclick="toggleWishlist('sunset-1bhk-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-1bhk.jpg" alt="Sunset Bay 1-BHK Serviced Flat" />
+                <span class="tag-badge">Value 1-BHK Flat</span>
+                <div class="price-tag">₹6,263 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Sunset Bay 1-BHK Serviced Flat</h3>
+                <p class="desc">Bright and airy one-bedroom apartment with a dedicated living salon, dining counter, fully equipped kitchen with microwave and fridge, and sunset balcony.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 3 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 650 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King + Sofa</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-blender"></i> Full Kitchen</span>
+                  <span class="amenity-chip"><i class="fas fa-sun"></i> Sunset Balcony</span>
+                  <span class="amenity-chip"><i class="fas fa-tshirt"></i> Washing Unit</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="sunset-1bhk-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower Price Flat 3: Serene Garden 2-BHK Family Flat -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="serene-garden-flat">
+              <button class="wishlist-heart-btn" data-room-id="serene-garden-flat" onclick="toggleWishlist('serene-garden-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-garden.jpg" alt="Serene Garden 2-BHK Family Flat" />
+                <span class="tag-badge">Family 2-BHK Flat</span>
+                <div class="price-tag">₹9,185 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Serene Garden 2-BHK Family Flat</h3>
+                <p class="desc">Spacious ground-floor family flat with lush lawn garden views, 4-seater dining table, full chef-ready kitchen, laundry suite, and children play corner.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 5 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 920 sq ft</span>
+                  <span><i class="fas fa-bed"></i> 2 Queen Beds</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-door-open"></i> 2 Bedrooms</span>
+                  <span class="amenity-chip"><i class="fas fa-seedling"></i> Garden Patio</span>
+                  <span class="amenity-chip"><i class="fas fa-parking"></i> Free Parking</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="serene-garden-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower Price Flat 4: Seaside Executive 2-BHK Flat -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="seaside-executive-flat">
+              <button class="wishlist-heart-btn" data-room-id="seaside-executive-flat" onclick="toggleWishlist('seaside-executive-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-executive.jpg" alt="Seaside Executive 2-BHK Flat" />
+                <span class="tag-badge">Executive 2-BHK Flat</span>
+                <div class="price-tag">₹15,030 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Seaside Executive 2-BHK Flat</h3>
+                <p class="desc">Designer apartment with floor-to-ceiling windows, modern granite kitchen, ergonomic workstation, master soaking tub, and sweeping coastal views.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 4 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,150 sq ft</span>
+                  <span><i class="fas fa-bed"></i> 2 King Beds</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-laptop"></i> Work Suite</span>
+                  <span class="amenity-chip"><i class="fas fa-water"></i> Ocean View</span>
+                  <span class="amenity-chip"><i class="fas fa-bath"></i> Soaking Tub</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="seaside-executive-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flat 1 -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="oceanfront-duplex-flat">
+              <button class="wishlist-heart-btn" data-room-id="oceanfront-duplex-flat" onclick="toggleWishlist('oceanfront-duplex-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-1.jpg" alt="Royal Oceanfront Duplex Flat" />
+                <span class="tag-badge">Duplex Flat Residence</span>
+                <div class="price-tag">₹91,850 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Royal Oceanfront Duplex Flat</h3>
+                <p class="desc">Multi-level residential duplex flat featuring a chef designer kitchen, marble breakfast island, double-height panoramic ocean living room, and private sea-facing terrace.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 6 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 2,100 sq ft</span>
+                  <span><i class="fas fa-bed"></i> 3 King Beds</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-utensils"></i> Chef Kitchen</span>
+                  <span class="amenity-chip"><i class="fas fa-couch"></i> Living Salon</span>
+                  <span class="amenity-chip"><i class="fas fa-concierge-bell"></i> 24/7 Butler</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="oceanfront-duplex-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flat 2 -->
+          <div class="swiper-slide" data-category="flat">
+            <div class="room-card" data-room-id="grand-marina-flat">
+              <button class="wishlist-heart-btn" data-room-id="grand-marina-flat" onclick="toggleWishlist('grand-marina-flat')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/flat-2.jpg" alt="Grand Marina Penthouse Flat" />
+                <span class="tag-badge">Serviced Residence Flat</span>
+                <div class="price-tag">₹81,830 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Grand Marina Penthouse Flat</h3>
+                <p class="desc">Sprawling private serviced flat with custom Italian cabinetry, gourmet kitchenette, open dining pavilion, private sea-view veranda, and en-suite marble spa bathrooms.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 4 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,750 sq ft</span>
+                  <span><i class="fas fa-bed"></i> 2 King Beds</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-coffee"></i> Kitchenette</span>
+                  <span class="amenity-chip"><i class="fas fa-water"></i> Sea Veranda</span>
+                  <span class="amenity-chip"><i class="fas fa-laptop"></i> Work Suite</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="grand-marina-flat">
+                    <i class="fas fa-calendar-check"></i> Reserve Flat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lounge 1 -->
+          <div class="swiper-slide" data-category="lounge">
+            <div class="room-card" data-room-id="sky-lounge-suite">
+              <button class="wishlist-heart-btn" data-room-id="sky-lounge-suite" onclick="toggleWishlist('sky-lounge-suite')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/lounge-1.jpg" alt="Celestial VIP Sky Lounge & Suite" />
+                <span class="tag-badge">VIP Sky Lounge Suite</span>
+                <div class="price-tag">₹74,315 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Celestial VIP Sky Lounge & Suite</h3>
+                <p class="desc">Direct private lift access to our 51st floor Celestial Sky Lounge with private sommelier bar, velvet salon seating, panoramic twilight bay vistas, and all-day curated tapas service.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 3 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,100 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-cocktail"></i> Sky Lounge</span>
+                  <span class="amenity-chip"><i class="fas fa-wine-glass"></i> Sommelier Bar</span>
+                  <span class="amenity-chip"><i class="fas fa-cloud-sun"></i> Twilight View</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="sky-lounge-suite">
+                    <i class="fas fa-calendar-check"></i> Reserve Lounge Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lounge 2 -->
+          <div class="swiper-slide" data-category="lounge">
+            <div class="room-card" data-room-id="imperial-club-lounge">
+              <button class="wishlist-heart-btn" data-room-id="imperial-club-lounge" onclick="toggleWishlist('imperial-club-lounge')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/lounge-2.jpg" alt="Imperial Club Lounge Residence" />
+                <span class="tag-badge">Private Club Lounge</span>
+                <div class="price-tag">₹60,120 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Imperial Club Lounge Residence</h3>
+                <p class="desc">An exclusive club lounge residence featuring rich mahogany millwork, private cocktail mixologist service, boardroom lounge library, and all-inclusive club dining privileges.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 4 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,350 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-glass-cheers"></i> Mixologist Bar</span>
+                  <span class="amenity-chip"><i class="fas fa-book"></i> Library Salon</span>
+                  <span class="amenity-chip"><i class="fas fa-clock"></i> 24/7 Access</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="imperial-club-lounge">
+                    <i class="fas fa-calendar-check"></i> Reserve Club Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 1 -->
+          <div class="swiper-slide" data-category="penthouse">
+            <div class="room-card" data-room-id="imperial-penthouse">
+              <button class="wishlist-heart-btn" data-room-id="imperial-penthouse" onclick="toggleWishlist('imperial-penthouse')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-1.jpg" alt="Imperial Oceanfront Penthouse" />
+                <span class="tag-badge">Signature Penthouse</span>
+                <div class="price-tag">$1,250 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Imperial Oceanfront Penthouse</h3>
+                <p class="desc">Perched on the highest floor with expansive wraparound panoramic ocean vistas, private infinity dip pool, and 24-hour dedicated butler service.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 4 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,450 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-swimming-pool"></i> Private Pool</span>
+                  <span class="amenity-chip"><i class="fas fa-concierge-bell"></i> 24/7 Butler</span>
+                  <span class="amenity-chip"><i class="fas fa-wine-glass"></i> Champagne Bar</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="imperial-penthouse">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 2 -->
+          <div class="swiper-slide" data-category="villa">
+            <div class="room-card" data-room-id="royal-horizon-villa">
+              <button class="wishlist-heart-btn" data-room-id="royal-horizon-villa" onclick="toggleWishlist('royal-horizon-villa')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-2.jpg" alt="Royal Horizon Beach Villa" />
+                <span class="tag-badge">Beachfront</span>
+                <div class="price-tag">$950 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Royal Horizon Beach Villa</h3>
+                <p class="desc">Direct private pathway to powdery white sands, sun-drenched outdoor terrace, marble soaking tub, and bespoke sunrise dining pavilion.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 4 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 1,200 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-umbrella-beach"></i> Beach Access</span>
+                  <span class="amenity-chip"><i class="fas fa-hot-tub"></i> Stone Tub</span>
+                  <span class="amenity-chip"><i class="fas fa-coffee"></i> Nespresso</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="royal-horizon-villa">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 3 -->
+          <div class="swiper-slide" data-category="villa">
+            <div class="room-card" data-room-id="presidential-garden">
+              <button class="wishlist-heart-btn" data-room-id="presidential-garden" onclick="toggleWishlist('presidential-garden')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-3.jpg" alt="Presidential Garden Residence" />
+                <span class="tag-badge">Botanical Oasis</span>
+                <div class="price-tag">$780 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Presidential Garden Residence</h3>
+                <p class="desc">Surrounded by lush tropical flora, open-concept living suite with bespoke teak furnishings, rain shower, and secluded patio jacuzzi.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 3 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 980 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-spa"></i> Patio Jacuzzi</span>
+                  <span class="amenity-chip"><i class="fas fa-tree"></i> Garden View</span>
+                  <span class="amenity-chip"><i class="fas fa-wifi"></i> High-Speed Wi-Fi</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="presidential-garden">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 4 -->
+          <div class="swiper-slide" data-category="executive">
+            <div class="room-card" data-room-id="serenity-wellness">
+              <button class="wishlist-heart-btn" data-room-id="serenity-wellness" onclick="toggleWishlist('serenity-wellness')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-4.jpg" alt="Serenity Wellness Suite" />
+                <span class="tag-badge">Spa & Wellness</span>
+                <div class="price-tag">$620 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Serenity Wellness Suite</h3>
+                <p class="desc">Crafted for restorative relaxation featuring organic linens, en-suite aromatherapy shower, sea-view balcony cabana, and herbal tea bar.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 2 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 850 sq ft</span>
+                  <span><i class="fas fa-bed"></i> King Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-shower"></i> Aroma Shower</span>
+                  <span class="amenity-chip"><i class="fas fa-feather-alt"></i> Pillow Menu</span>
+                  <span class="amenity-chip"><i class="fas fa-sun"></i> Private Cabana</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="serenity-wellness">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 5 -->
+          <div class="swiper-slide" data-category="executive">
+            <div class="room-card" data-room-id="executive-grand">
+              <button class="wishlist-heart-btn" data-room-id="executive-grand" onclick="toggleWishlist('executive-grand')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-5.jpg" alt="Executive Grand Suite" />
+                <span class="tag-badge">Sunset Terrace</span>
+                <div class="price-tag">$490 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Executive Grand Suite</h3>
+                <p class="desc">Warm acoustic wood wall paneling, elegant dining table, curated art collections, and private terrace offering stunning twilight views.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 2 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 750 sq ft</span>
+                  <span><i class="fas fa-bed"></i> Queen Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-couch"></i> Living Lounge</span>
+                  <span class="amenity-chip"><i class="fas fa-laptop"></i> Work Desk</span>
+                  <span class="amenity-chip"><i class="fas fa-cocktail"></i> Mini Bar</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="executive-grand">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Room 6 -->
+          <div class="swiper-slide" data-category="deluxe">
+            <div class="room-card" data-room-id="deluxe-horizon">
+              <button class="wishlist-heart-btn" data-room-id="deluxe-horizon" onclick="toggleWishlist('deluxe-horizon')" title="Save to Wishlist">
+                <i class="far fa-heart"></i>
+              </button>
+              <div class="image">
+                <img src="/images/room-6.jpg" alt="Deluxe Horizon Room" />
+                <span class="tag-badge">Deluxe Classic</span>
+                <div class="price-tag">$380 <span>/ night</span></div>
+              </div>
+              <div class="content">
+                <h3>Deluxe Horizon Room</h3>
+                <p class="desc">Stay in comfort and style with our exclusive room. Perfect for relaxation and convenience with plush linens, espresso maker, and luxury amenities.</p>
+                <div class="room-specs">
+                  <span><i class="fas fa-user-friends"></i> 2 Guests</span>
+                  <span><i class="fas fa-expand-arrows-alt"></i> 550 sq ft</span>
+                  <span><i class="fas fa-bed"></i> Queen Bed</span>
+                </div>
+                <div class="room-amenities">
+                  <span class="amenity-chip"><i class="fas fa-water"></i> Sea View</span>
+                  <span class="amenity-chip"><i class="fas fa-bath"></i> Marble Bath</span>
+                  <span class="amenity-chip"><i class="fas fa-tv"></i> 4K OLED TV</span>
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-book-room" data-room-id="deluxe-horizon">
+                    <i class="fas fa-calendar-check"></i> Reserve Suite
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SERVICES & RESORT EXPERIENCES
+         ========================================================================== -->
+    <section class="services" id="services">
+      <div class="heading">
+        <span class="sub-title">World-Class Indulgences</span>
+        <h2>Signature Services & Amenities</h2>
+        <div class="gold-divider"></div>
+        <p>Curated offerings designed to transform your getaway into an extraordinary symphony of pampering and comfort.</p>
+      </div>
+
+      <div class="box-container">
+        <div class="box">
+          <div class="icon"><i class="fas fa-wine-glass-alt"></i></div>
+          <h3>Celestial Sky Lounge</h3>
+          <p>Unwind on our 51st-floor panoramic sky lounge with private sommelier tastings, velvet salon seating, and twilight cocktails.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-building"></i></div>
+          <h3>Serviced Luxury Flats</h3>
+          <p>Indulge in spacious multi-bedroom residential flats with gourmet chef kitchens, open-air terraces, and dedicated butler care.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-swimming-pool"></i></div>
+          <h3>Infinity Pool</h3>
+          <p>Enjoy a refreshing dip in our luxurious swimming pool overlooking the ocean horizon.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-cocktail"></i></div>
+          <h3>Artisanal Mixology</h3>
+          <p>Savor delicious cuisines and beverages crafted just for you by our master mixologists.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-utensils"></i></div>
+          <h3>Signature Dining</h3>
+          <p>Dine in elegance at our on-site restaurant offering diverse menus and Michelin-grade recipes.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-dumbbell"></i></div>
+          <h3>Fitness Sanctuary</h3>
+          <p>Stay active and healthy in our state-of-the-art fitness center with personal wellness coaches.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-spa"></i></div>
+          <h3>Luxury Spa</h3>
+          <p>Relax and rejuvenate with our exclusive spa treatments, thermal waters, and aroma therapies.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-umbrella-beach"></i></div>
+          <h3>Private Beach</h3>
+          <p>Unwind on the serene sands of our private resort beach with exclusive cabanas and chilled refreshments.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-concierge-bell"></i></div>
+          <h3>24/7 Concierge</h3>
+          <p>Experience top-tier hospitality with round-the-clock concierge services ready to assist with any request.</p>
+        </div>
+
+        <div class="box">
+          <div class="icon"><i class="fas fa-car"></i></div>
+          <h3>Valet Service</h3>
+          <p>Enjoy hassle-free parking with our professional valet service, EV chargers, and private chauffeur options.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE LEAFLET HOTEL LOCATION MAP
+         ========================================================================== -->
+    <section class="map-section" id="location">
+      <div class="heading">
+        <span class="sub-title">Secluded Coastal Paradise</span>
+        <h2>Explore Our Prestigious Destination</h2>
+        <div class="gold-divider"></div>
+        <p>Strategically situated along the sun-kissed French Riviera coast with seamless private heliport and yacht access.</p>
+      </div>
+
+      <div class="map-container-box">
+        <div id="hotel-map"></div>
+        <div class="nearby-distances-strip">
+          <div class="distance-item">
+            <div class="dist-icon"><i class="fas fa-plane"></i></div>
+            <div class="dist-text">
+              <h5>Nice Airport (NCE)</h5>
+              <p>18 km · 22 min Chauffeur</p>
+            </div>
+          </div>
+          <div class="distance-item">
+            <div class="dist-icon"><i class="fas fa-ship"></i></div>
+            <div class="dist-text">
+              <h5>Monaco Yacht Club</h5>
+              <p>12 km · 15 min Private Yacht</p>
+            </div>
+          </div>
+          <div class="distance-item">
+            <div class="dist-icon"><i class="fas fa-umbrella-beach"></i></div>
+            <div class="dist-text">
+              <h5>Private Beach Cove</h5>
+              <p>0 m · Direct Suite Access</p>
+            </div>
+          </div>
+          <div class="distance-item">
+            <div class="dist-icon"><i class="fas fa-helicopter"></i></div>
+            <div class="dist-text">
+              <h5>Resort Helipad</h5>
+              <p>On-site · 7 min to Nice</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PHOTO GALLERY WITH SWIPER & FULLSCREEN LIGHTBOX
+         ========================================================================== -->
+    <section class="gallery" id="gallery">
+      <div class="heading">
+        <span class="sub-title">Visual Elegance</span>
+        <h2>Immerse in the Atmosphere</h2>
+        <div class="gold-divider"></div>
+        <p>A glimpse into our architecture, gourmet culinary creations, and tranquil resort grounds.</p>
+      </div>
+
+      <div class="swiper gallery-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide">
+            <img src="/images/gallery1.jpg" alt="Vintage Wine Cellar" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Sommelier Cellar</span>
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <img src="/images/gallery2.jpg" alt="Gourmet Seafood Gastronomy" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Artisanal Cuisine</span>
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <img src="/images/gallery3.jpg" alt="Cliffside Spa Stone Tub" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Spa Sanctuaries</span>
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <img src="/images/gallery4.jpg" alt="Mediterranean Pasta Delicacies" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Seaside Dining</span>
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <img src="/images/gallery5.jpg" alt="Coastal Salad Harvest" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Organic Harvest</span>
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <img src="/images/gallery6.jpg" alt="Panoramic Azure Balcony" />
+            <div class="icon">
+              <i class="fas fa-plus"></i>
+              <span>Oceanfront Terraces</span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Popup Lightbox Modal -->
+      <div class="popup-image">
+        <div class="popup-container">
+          <span class="close-btn">&times;</span>
+          <img src="/images/gallery1.jpg" alt="Expanded Gallery Preview" />
+          <div class="prev-btn"><i class="fas fa-chevron-left"></i></div>
+          <div class="next-btn"><i class="fas fa-chevron-right"></i></div>
+          <span class="image-count">1 / 6</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         GUEST REVIEWS & ASPECT SENTIMENT ANALYSIS SECTION
+         ========================================================================== -->
+    <section class="reviews" id="reviews">
+      <div class="heading">
+        <span class="sub-title">Guest Acclaim & Sentiment</span>
+        <h2>Reflections of Unforgettable Stays</h2>
+        <div class="gold-divider"></div>
+        <p>Hear from discerning travelers who made Hotelier their personal haven of relaxation.</p>
+      </div>
+
+      <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+
+          <!-- Review 1 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "Absolutely exceptional stay! The attention to detail in service was remarkable. From the moment we arrived, the staff went above and beyond to ensure our comfort. The private beach access made our honeymoon truly unforgettable."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-smile"></i> Staff: 99% Positive</span>
+                <span class="sentiment-pill positive"><i class="fas fa-umbrella-beach"></i> Beach Access: Outstanding</span>
+                <span class="sentiment-pill positive"><i class="fas fa-sparkles"></i> Cleanliness: Pristine</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-1.png" alt="Alexander Wright" />
+                <div>
+                  <h4>Alexander Wright</h4>
+                  <span>Venture Partner · London, UK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "The Imperial Penthouse surpassed all expectations. Waking up to the sunrise shimmering across the ocean while breakfast was prepared by our private butler was pure magic. Unparalleled luxury."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-crown"></i> Penthouse: 100% Satisfaction</span>
+                <span class="sentiment-pill positive"><i class="fas fa-concierge-bell"></i> Butler: Exceptional</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-2.png" alt="Elena Rostova" />
+                <div>
+                  <h4>Elena Rostova</h4>
+                  <span>Design Director · Geneva, Switzerland</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "As an architectural enthusiast, every corner of Hotelier left me breathless. The spa pavilion treatments followed by sunset cocktails on the private deck are an experience that stays with you forever."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-spa"></i> Wellness Spa: World-Class</span>
+                <span class="sentiment-pill positive"><i class="fas fa-archway"></i> Architecture: Sublime</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-3.png" alt="Marcus Sterling" />
+                <div>
+                  <h4>Marcus Sterling</h4>
+                  <span>Private Collector · Zurich, Switzerland</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "The culinary mastery at Hotelier is second to none. The seafood spaghetti and coastal wine pairings were exquisite. Flawless concierge service that handled our yacht reservations seamlessly."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-utensils"></i> Gastronomy: 3 Michelin Stars</span>
+                <span class="sentiment-pill positive"><i class="fas fa-ship"></i> Yacht Concierge: Flawless</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-4.png" alt="Sophia Lin" />
+                <div>
+                  <h4>Sophia Lin</h4>
+                  <span>Architect · Tokyo, Japan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "Booking our anniversary retreat through the reservation system was effortless. Upon arrival, the Dom Pérignon and rose petals were waiting in our Beach Villa. Simply world-class hospitality."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-calendar-check"></i> Reservation UX: Intuitive</span>
+                <span class="sentiment-pill positive"><i class="fas fa-gift"></i> Welcome Package: 10/10</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-5.png" alt="David Vance" />
+                <div>
+                  <h4>David Vance</h4>
+                  <span>Technology Executive · New York, USA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6 -->
+          <div class="swiper-slide">
+            <div class="review-card">
+              <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+              <p class="text">
+                "A true paradise of serenity. The garden suites provide complete privacy, while the wellness team crafted a bespoke therapeutic routine. We have already booked our return for next spring."
+              </p>
+              <div class="aspect-sentiment-tags">
+                <span class="sentiment-pill positive"><i class="fas fa-user-shield"></i> Privacy: Supreme</span>
+                <span class="sentiment-pill positive"><i class="fas fa-repeat"></i> Loyalty Intent: Confirmed</span>
+              </div>
+              <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="user-info">
+                <img src="/images/pic-6.png" alt="Claire Beaumont" />
+                <div>
+                  <h4>Claire Beaumont</h4>
+                  <span>Creative Producer · Paris, France</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQS ACCORDION SECTION
+         ========================================================================== -->
+    <section class="faqs" id="faqs">
+      <div class="heading">
+        <span class="sub-title">Inquiries & Details</span>
+        <h2>Frequently Asked Questions</h2>
+        <div class="gold-divider"></div>
+        <p>Everything you need to know about your arrival, suite amenities, policies, and privileges.</p>
+      </div>
+
+      <div class="row">
+        <div class="content">
+          <div class="box active">
+            <h3>
+              <span>What payment methods and digital transactions do you accept?</span>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <p>
+              We accept all major credit cards including Visa, MasterCard, American Express, and Discover. We also accept digital payments through PayPal and direct bank transfers for group bookings.
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>
+              <span>What are the standard check-in and check-out times?</span>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <p>
+              Our standard check-in time is 3:00 PM and check-out time is 11:00 AM. Early check-in and late check-out can be arranged based on availability for an additional fee.
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>
+              <span>Is breakfast included with my suite reservation?</span>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <p>
+              Yes, all our room rates include a complimentary breakfast buffet served at our main restaurant from 6:30 AM to 10:30 AM daily, featuring both continental and hot breakfast options.
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>
+              <span>Do you provide airport transfer and chauffeur arrangements?</span>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <p>
+              Yes, we provide airport pickup and drop-off services. Please contact our concierge at least 24 hours in advance to arrange your transfer and confirm the rates.
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>
+              <span>What is the resort cancellation policy?</span>
+              <i class="fas fa-chevron-down"></i>
+            </h3>
+            <p>
+              Cancellations made 48 hours prior to check-in are free of charge. Late cancellations or no-shows may incur a fee equivalent to one night's stay.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOOTER SECTION
+         ========================================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <a href="#home" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
+              <i class="fas fa-crown" style="color: var(--primary);"></i>
+              <div>
+                <div class="logo-text" style="color: var(--white); font-size: 1.4rem;">HOTELIER</div>
+                <span class="logo-sub" style="color: var(--primary); font-size: 0.65rem;">Resort & Spa</span>
+              </div>
+            </a>
+            <p>
+              Experience luxury and comfort at its finest. Subscribe to our newsletter for exclusive offers and updates.
+            </p>
+            <div class="socials">
+              <a href="#home" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#home" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#home" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#home" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div class="col">
+            <h3>Resort Navigation</h3>
+            <div class="links">
+              <a href="#home"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> Home</a>
+              <a href="#about"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> About Legacy</a>
+              <a href="#rooms"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> Rooms & Suites</a>
+              <a href="#services"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> Amenities</a>
+              <a href="#location"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> Location Map</a>
+              <a href="#reviews"><i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.75rem; margin-right: 0.5rem;"></i> Guest Reviews</a>
+            </div>
+          </div>
+
+          <div class="col">
+            <h3>Concierge Desk</h3>
+            <div class="contact-info">
+              <p><i class="fas fa-map-marker-alt"></i> 1000 Ocean Boulevard, Côte d'Azur</p>
+              <p><i class="fas fa-phone-alt"></i> +1 (800) 849-2041</p>
+              <p><i class="fas fa-envelope"></i> concierge@hotelier-resort.com</p>
+              <p><i class="fas fa-clock"></i> 24/7 Butler & Reception</p>
+            </div>
+          </div>
+
+          <div class="col">
+            <h3>VIP Privileges</h3>
+            <p>Join the Hotelier Circle to receive bespoke invitations, seasonal rate releases, and secret culinary table access.</p>
+            <form id="newsletter-form" class="newsletter-form">
+              <input type="email" placeholder="Enter your email address" required>
+              <button type="submit" class="btn btn-sm">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div>
+            &copy; 2026 Hotelier Luxury Resort & Spa. All Rights Reserved.
+          </div>
+          <div>
+            Pure HTML5 · CSS3 · Modern JavaScript Architecture · Concurrency Protected
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==========================================================================
+         FLOATING AI CONCIERGE BUTTON
+         ========================================================================== -->
+    <div class="floating-ai-btn" id="open-ai-concierge-trigger" title="Ask AI Travel Concierge">
+      <i class="fas fa-brain"></i>
+      <span>AI Travel Concierge</span>
+    </div>
+
+    <!-- ==========================================================================
+         AI TRAVEL CONCIERGE MODAL
+         ========================================================================== -->
+    <div id="ai-concierge-modal" class="booking-modal-overlay">
+      <div class="booking-modal ai-concierge-modal">
+        <div class="booking-modal-header">
+          <h3><i class="fas fa-brain"></i> AI Luxury Travel Concierge</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('ai-concierge-modal').classList.remove('active'); document.body.style.overflow='auto';">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="booking-modal-body">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            Describe your dream getaway in natural language, or pick a suggestion below. Our explainable recommendation engine calculates an algorithmic match score:
+            <span style="color: var(--primary); font-family: 'Cinzel', serif; display: block; margin-top: 0.25rem;">
+              S(h) = w_b·B(h) + w_l·L(h) + w_a·A(h) + w_r·R(h)
+            </span>
+          </p>
+
+          <div class="ai-quick-prompts">
+            <button class="ai-prompt-btn" data-query="Beachfront suite with private pool under $1000">
+              Beachfront villa under $1000
+            </button>
+            <button class="ai-prompt-btn" data-query="Romantic anniversary suite with spa and jacuzzi">
+              Anniversary suite with spa
+            </button>
+            <button class="ai-prompt-btn" data-query="Budget luxury room under $500 with ocean view">
+              Budget room under $500
+            </button>
+          </div>
+
+          <div class="ai-chat-box" id="ai-chat-messages">
+            <div class="ai-message bot">
+              Bonjour! I am your Hotelier AI Concierge. How may I curate your sanctuary stay today? You can specify budget limits, desired amenities (infinity pool, beach access, jacuzzi), or party size.
+            </div>
+          </div>
+
+          <div class="ai-input-bar">
+            <input type="text" id="ai-chat-input" placeholder="e.g. Find me a suite with private jacuzzi and breakfast under $900...">
+            <button class="btn btn-sm" id="ai-send-btn">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         ADVANCED MULTI-STEP HOTEL RESERVATION MODAL
+         ========================================================================== -->
+    <div id="booking-modal-overlay" class="booking-modal-overlay">
+      <div class="booking-modal">
+        <!-- Modal Header -->
+        <div class="booking-modal-header">
+          <h3><i class="fas fa-crown"></i> Reserve Your Luxury Suite</h3>
+          <button class="modal-close-btn close-booking-modal" title="Close"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Stepper Progress Bar -->
+        <div class="booking-stepper">
+          <div class="step-node active" id="step-node-1">
+            <span class="step-num">1</span>
+            <span>Suite Selection</span>
+          </div>
+          <div class="step-node" id="step-node-2">
+            <span class="step-num">2</span>
+            <span>VIP Experiences</span>
+          </div>
+          <div class="step-node" id="step-node-3">
+            <span class="step-num">3</span>
+            <span>Guest & Payment</span>
+          </div>
+          <div class="step-node" id="step-node-4">
+            <span class="step-num">4</span>
+            <span>Confirmation</span>
+          </div>
+        </div>
+
+        <!-- Modal Body Content Panes -->
+        <div class="booking-modal-body">
+
+          <!-- STEP 1: Room Selection & Conflict Prevention -->
+          <div id="booking-step-1">
+            <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h4 style="color: var(--white); font-size: 1.25rem;">Select Your Sanctuary Suite</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                  Checking dates: <strong style="color: var(--primary);" id="step1-dates-display">Selected Dates</strong> (<span class="calc-nights-count">3 Nights</span>).
+                </p>
+              </div>
+            </div>
+
+            <div id="modal-conflict-alert"></div>
+
+            <!-- Dynamic Room List -->
+            <div id="modal-room-list" class="modal-room-grid"></div>
+
+            <!-- Pricing Breakdown Preview -->
+            <div class="price-summary-box">
+              <div class="price-row">
+                <span>Room Base Rate (<span class="calc-nights-count">3 Nights</span>)</span>
+                <span class="calc-room-base">$3,750</span>
+              </div>
+              <div class="price-row">
+                <span>Hospitality & Luxury Levies (12%)</span>
+                <span class="calc-taxes">$450</span>
+              </div>
+              <div class="price-row">
+                <span>Eco & Sanctuary Maintenance Fee ($35/night)</span>
+                <span class="calc-resort-fee">$105</span>
+              </div>
+              <div class="price-row total">
+                <span>Estimated Subtotal</span>
+                <span class="calc-grand-total">$4,305</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: VIP Add-ons -->
+          <div id="booking-step-2" style="display: none;">
+            <div style="margin-bottom: 1.5rem;">
+              <h4 style="color: var(--white); font-size: 1.25rem;">Enhance Your Stay with Bespoke Experiences</h4>
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Curated VIP enhancements tailored to make your holiday truly incomparable.</p>
+            </div>
+
+            <!-- Dynamic Add-ons List -->
+            <div id="modal-addon-list" class="addon-grid"></div>
+
+            <div class="price-summary-box">
+              <div class="price-row">
+                <span>Room Base Rate (<span class="calc-nights-count">3 Nights</span>)</span>
+                <span class="calc-room-base">$3,750</span>
+              </div>
+              <div class="price-row">
+                <span>Selected VIP Experiences</span>
+                <span class="calc-addons-total">$0</span>
+              </div>
+              <div class="price-row">
+                <span>Resort & Environmental Levies</span>
+                <span class="calc-resort-fee">$105</span>
+              </div>
+              <div class="price-row">
+                <span>Applicable Hospitality Taxes (12%)</span>
+                <span class="calc-taxes">$450</span>
+              </div>
+              <div class="price-row total">
+                <span>Guaranteed Total Amount</span>
+                <span class="calc-grand-total">$4,305</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Guest Profile & Payment Methods -->
+          <div id="booking-step-3" style="display: none;">
+            <div id="step3-summary-info"></div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <h4 style="color: var(--white); font-size: 1.2rem;">Primary Guest Registration</h4>
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Please provide details for your official reservation registration.</p>
+            </div>
+
+            <div class="guest-form-grid">
+              <div class="form-group">
+                <label for="guest-name">Full Legal Name *</label>
+                <input type="text" id="guest-name" placeholder="e.g. Lord Alexander Wright" required>
+              </div>
+
+              <div class="form-group">
+                <label for="guest-email">Email Address *</label>
+                <input type="email" id="guest-email" placeholder="alexander@domain.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="guest-phone">Telephone / WhatsApp</label>
+                <input type="tel" id="guest-phone" placeholder="+1 (555) 234-5678">
+              </div>
+
+              <div class="form-group">
+                <label for="guest-country">Country of Residence</label>
+                <input type="text" id="guest-country" placeholder="United Kingdom">
+              </div>
+
+              <div class="form-group">
+                <label for="guest-pillow">Bespoke Pillow Menu</label>
+                <select id="guest-pillow">
+                  <option value="Hypoallergenic Goose Feather">Hypoallergenic Goose Feather</option>
+                  <option value="Organic Memory Foam Contour">Organic Memory Foam Contour</option>
+                  <option value="Silk Infused Lavender Aromatherapy">Silk Infused Lavender Aromatherapy</option>
+                  <option value="Firm Ergonomic Buckwheat">Firm Ergonomic Buckwheat</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="guest-diet">Dietary Preferences</label>
+                <select id="guest-diet">
+                  <option value="None">No Specific Restriction</option>
+                  <option value="Pescatarian">Pescatarian Gourmet</option>
+                  <option value="Vegetarian">Plant-based / Vegetarian</option>
+                  <option value="Gluten-Free">Strict Gluten-Free</option>
+                  <option value="Halal">Halal Cuisine</option>
+                  <option value="Kosher">Kosher Cuisine</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label>Payment Method & Guarantee</label>
+                <div class="payment-methods-grid">
+                  <div class="payment-card-option active" data-method="Credit Card (Visa / Amex / MC)">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Credit Card</span>
+                  </div>
+                  <div class="payment-card-option" data-method="PayPal Express">
+                    <i class="fab fa-paypal"></i>
+                    <span>PayPal</span>
+                  </div>
+                  <div class="payment-card-option" data-method="UPI & Digital QR">
+                    <i class="fas fa-qrcode"></i>
+                    <span>UPI / QR</span>
+                  </div>
+                  <div class="payment-card-option" data-method="Pay at Resort Arrival">
+                    <i class="fas fa-hotel"></i>
+                    <span>Pay on Arrival</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="guest-requests">Special Concierge Requests</label>
+                <textarea id="guest-requests" rows="2" placeholder="Anniversary flower arrangements, private yacht timing, late checkout request..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Official Confirmation Voucher Screen -->
+          <div id="booking-step-4" style="display: none;">
+            <div id="voucher-display"></div>
+          </div>
+
+        </div>
+
+        <!-- Modal Footer Navigation Controls -->
+        <div class="booking-modal-footer">
+          <!-- Step 1 Controls -->
+          <div id="step-1-controls" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn-outline btn-sm close-booking-modal">Cancel</button>
+            <button class="btn btn-sm" id="btn-to-step-2">
+              Next: VIP Add-ons <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Step 2 Controls -->
+          <div id="step-2-controls" style="width: 100%; display: none; justify-content: space-between; align-items: center;">
+            <button class="btn-outline btn-sm" id="btn-back-to-step-1">
+              <i class="fas fa-arrow-left"></i> Change Suite
+            </button>
+            <button class="btn btn-sm" id="btn-to-step-3">
+              Next: Guest Profile <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Step 3 Controls -->
+          <div id="step-3-controls" style="width: 100%; display: none; justify-content: space-between; align-items: center;">
+            <button class="btn-outline btn-sm" id="btn-back-to-step-2">
+              <i class="fas fa-arrow-left"></i> Back to Add-ons
+            </button>
+            <button class="btn btn-sm" id="btn-confirm-booking">
+              <i class="fas fa-check-circle"></i> Guarantee Reservation
+            </button>
+          </div>
+
+          <!-- Step 4 Controls -->
+          <div id="step-4-controls" style="width: 100%; display: none; justify-content: flex-end;">
+            <button class="btn btn-sm close-booking-modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         MY BOOKINGS LOOKUP MODAL
+         ========================================================================== -->
+    <div id="my-bookings-modal" class="booking-modal-overlay">
+      <div class="booking-modal my-bookings-modal">
+        <div class="booking-modal-header">
+          <h3><i class="fas fa-suitcase"></i> Your Active Reservations</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('my-bookings-modal').classList.remove('active'); document.body.style.overflow='auto';">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="booking-modal-body">
+          <div id="my-bookings-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         WISHLIST MODAL DRAWER
+         ========================================================================== -->
+    <div id="wishlist-modal" class="booking-modal-overlay">
+      <div class="booking-modal my-bookings-modal">
+        <div class="booking-modal-header">
+          <h3><i class="fas fa-heart" style="color: #ef4444;"></i> Your Saved Suites (Wishlist)</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('wishlist-modal').classList.remove('active'); document.body.style.overflow='auto';">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="booking-modal-body">
+          <div id="wishlist-items-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         MODIFY RESERVATION DATES MODAL
+         ========================================================================== -->
+    <div id="modify-booking-modal" class="booking-modal-overlay">
+      <div class="booking-modal" style="max-width: 600px;">
+        <div class="booking-modal-header">
+          <h3><i class="fas fa-calendar-day"></i> Modify Reservation Dates</h3>
+          <button class="modal-close-btn" onclick="document.getElementById('modify-booking-modal').classList.remove('active');">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="booking-modal-body">
+          <div id="modify-booking-details"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Swiper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Leaflet JS CDN -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Master Application Vanilla Script -->
+    <script src="/script.js"></script>
+  </body>
+</html>
